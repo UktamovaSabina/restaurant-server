@@ -1,0 +1,31 @@
+type Query {
+    orders: OrdersResponse,
+    singleOrder(id: ID): OrderResponse
+}
+
+type Mutation {
+    orderFood(username: String, email: String, orders: [ID]): OrderResponse,
+    updateOrder(id: ID, username: String, email: String, orders: [ID], status: Boolean): OrderResponse,
+    declineOrder(id: ID): OrderResponse
+}
+
+type Order {
+    id: ID,
+    username: String!,
+    email: String!,
+    orders: [ID!]!,
+    status: Boolean,
+    ordered_at: String, 
+}
+
+type OrdersResponse {
+    status: Int,
+    message: String,
+    data: [Order]
+}
+
+type OrderResponse {
+    status: Int
+    message: String
+    data: Order
+}

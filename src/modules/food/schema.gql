@@ -1,0 +1,33 @@
+type Query {
+    foods: FoodsResponse,
+    singleFood(id: String): FoodResponse,
+}
+
+type Mutation {
+    createFood(food_name: String, food_price: Int, file: Upload, restaurant_id: ID): FoodResponse,
+    updateFood(food_name: String, id: ID, food_price: Int): FoodResponse,
+    deleteFood(id: ID): FoodResponse,
+}
+
+type Food {
+    id: ID,
+    food_name: String,
+    food_price: Int,
+    food_img_link: String,
+    restaurant_id: ID,
+    restaurant: String
+}
+
+type FoodsResponse {
+    status: Int,
+    message: String,
+    data: [Food]
+}
+
+type FoodResponse {
+    status: Int,
+    message: String,
+    data: Food
+}
+
+scalar Upload

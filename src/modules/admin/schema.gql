@@ -1,0 +1,15 @@
+type Query {
+    admins: [Admin]
+    admin(username: String, password: String): AdminResponse
+}
+
+type Admin {
+    username: String,
+    password: String
+}
+
+type AdminResponse {
+    status: Int,
+    message: String,
+    token: String
+}
